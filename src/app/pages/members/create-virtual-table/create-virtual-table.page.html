@@ -1,0 +1,136 @@
+<ion-header no-border>
+  <ion-toolbar color="tertiary" lines="none">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/members/menu/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Crear una mesa virtual
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="tryCreateVirtualTable(formGroup.value)">
+      <ion-row align-items-center>
+        <ion-col size="7" align-self-end>
+          <ion-avatar class="virtual-table-photo">
+            <img align="right" #virtualTablePhoto [src]="virtualTablePhotoSrc" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="3">
+          <ion-row>
+            <ion-col size="12">
+              <ion-button (click)="takePhoto()">
+                <ion-icon slot="icon-only" name="camera"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-button (click)="selectPhoto()">
+                <ion-icon slot="icon-only" name="images"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-row>
+        </ion-row>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="floating">Título</ion-label>
+                <ion-input formControlName="title" type="title"></ion-input>
+              </ion-item>
+              <app-validation-message padding-left [validationMessages]="validationMessages.title"
+                [validationsForm]="formGroup" [validationType]="'title'">
+              </app-validation-message>
+              <ion-item>
+                <ion-label position="floating">Información extra</ion-label>
+                <ion-textarea formControlName="extraInformation" type="text">
+                </ion-textarea>
+              </ion-item>
+              <app-validation-message padding-left [validationMessages]="validationMessages.extraInformation"
+                [validationsForm]="formGroup" [validationType]="'extraInformation'">
+              </app-validation-message>
+              <ion-item>
+                <ion-label position="floating">Precio</ion-label>
+                <ion-input formControlName="price" type="number"></ion-input>
+              </ion-item>
+              <app-validation-message padding-left [validationMessages]="validationMessages.price"
+                [validationsForm]="formGroup" [validationType]="'price'">
+              </app-validation-message>
+              <ion-item>
+                <ion-label position="floating">Cantidad de platos</ion-label>
+                <ion-input formControlName="maxEating" type="number"></ion-input>
+              </ion-item>
+              <app-validation-message padding-left [validationMessages]="validationMessages.maxEating"
+                [validationsForm]="formGroup" [validationType]="'maxEating'">
+              </app-validation-message>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="floating">Tipo de pago</ion-label>
+                <ion-select formControlName="payMethods" multiple="true" placeholder="Seleccione un tipo de pago"
+                  okText="Aceptar" cancelText="Cancelar">
+                  <!-- [(ngModel)]="selectedPayMethods" -->
+                  <ng-container *ngFor="let payMethod of payMethods">
+                    <ion-select-option *ngIf="payMethod.enabled" [value]="payMethod">
+                      {{ payMethod.payMethod }}</ion-select-option>
+                  </ng-container>
+                </ion-select>
+              </ion-item>
+              <app-validation-message padding-left [validationMessages]="validationMessages.payMethods"
+                [validationsForm]="formGroup" [validationType]="'payMethods'">
+              </app-validation-message>
+
+              <br />
+
+              <ion-item>
+                <ion-label position="floating">
+                  Día y hora límite para reservas
+                </ion-label>
+                <ion-datetime formControlName="deadlineForEntering" displayFormat="DDDD DD MMM - HH:mm"
+                  placeholder="Ingrese día y hora" [minuteValues]="minuteValues" [monthNames]="esMonthNames"
+                  [monthShortNames]="esMonthShortNames" [dayNames]="esDayNames" [dayShortNames]="esDayShortNames">
+                </ion-datetime>
+              </ion-item>
+              <app-validation-message padding-left [validationMessages]="validationMessages.deadlineForEntering"
+                [validationsForm]="formGroup" [validationType]="'deadlineForEntering'">
+              </app-validation-message>
+              <ion-item>
+                <ion-label position="floating">
+                  Día y hora de entrega
+                </ion-label>
+                <ion-datetime formControlName="deliveryTime" displayFormat="DDDD DD MMM - HH:mm"
+                  placeholder="Ingrese día y hora" [minuteValues]="minuteValues" [monthNames]="esMonthNames"
+                  [monthShortNames]="esMonthShortNames" [dayNames]="esDayNames" [dayShortNames]="esDayShortNames">
+                </ion-datetime>
+                <app-validation-message padding-left [validationMessages]="validationMessages.deliveryTime"
+                  [validationsForm]="formGroup" [validationType]="'deliveryTime'">
+                </app-validation-message>
+              </ion-item>
+              <br />
+              <ion-item>
+                <ion-label>Aceptar comensales automáticamente</ion-label>
+                <ion-toggle formControlName="acceptAutomatically" color="primary" checked="false"></ion-toggle>
+                <!-- [(ngModel)]="modelAuAc" -->
+              </ion-item>
+              <br />
+              <ion-button color="primary" expand="block" type="submit" [disabled]="!formGroup.valid || isLoading.value">
+                <ion-icon slot="start" name="restaurant" color="light">
+                </ion-icon>
+                {{ 'Crear mesa virtual' | uppercase }}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>

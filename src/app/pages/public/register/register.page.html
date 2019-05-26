@@ -1,0 +1,101 @@
+<ion-header no-border>
+  <ion-toolbar color="tertiary" lines="none">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid fixed style="height: 100vh;">
+    <form class="form" [formGroup]="validationsForm" (ngSubmit)="tryRegisterUser(validationsForm.value)">
+
+      <ion-row align-items-center justify-content-center>
+        <ion-col size="6.5">
+          <ion-avatar class="profile-photo">
+            <img [src]=profilePhotoSrc #profilePhoto>
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="2.5">
+          <ion-row>
+            <ion-col size="12" no-padding>
+              <ion-button (click)="takePhoto()" class="profile-photo-button">
+                <ion-icon slot="icon-only" name="camera"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" no-padding>
+              <ion-button (click)="selectPhoto()" class="profile-photo-button">
+                <ion-icon slot="icon-only" name="images"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" no-padding>
+              <ion-button (click)="presentModal()" class="profile-photo-button">
+                <ion-icon slot="icon-only" name="person"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+          <app-validation-message [validationMessages]=validationMessages.name [validationsForm]=validationsForm
+            [validationType]="'name'">
+          </app-validation-message>
+
+          <ion-item>
+            <ion-label position="floating">Apellido</ion-label>
+            <ion-input type="text" formControlName="surname"></ion-input>
+          </ion-item>
+          <app-validation-message [validationMessages]=validationMessages.surname [validationsForm]=validationsForm
+            [validationType]="'surname'">
+          </app-validation-message>
+
+          <ion-item>
+            <ion-label position="floating">E-Mail</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <app-validation-message [validationMessages]=validationMessages.email [validationsForm]=validationsForm
+            [validationType]="'email'">
+          </app-validation-message>
+
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" formControlName="password" #password required
+              (ionChange)=changePassword(password.value)>
+            </ion-input>
+          </ion-item>
+          <app-validation-message [validationMessages]=validationMessages.password [validationsForm]=validationsForm
+            [validationType]="'password'">
+          </app-validation-message>
+
+          <ion-item>
+            <ion-label position="floating">Vuelva a ingresar la contraseña</ion-label>
+            <ion-input type="password" formControlName="repassword"></ion-input>
+          </ion-item>
+          <app-validation-message [validationMessages]=validationMessages.repassword [validationsForm]=validationsForm
+            [validationType]="'repassword'">
+          </app-validation-message>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button color="primary" expand="block" type="submit"
+            [disabled]="!validationsForm.valid || isLoading.value">
+            <ion-icon slot="start" name="restaurant" color="light"> </ion-icon>
+            {{ 'Registrar Usuario' | uppercase }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>

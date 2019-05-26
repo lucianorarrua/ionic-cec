@@ -1,0 +1,21 @@
+ion-grid {
+  width: 100%;
+}
+.profile-photo {
+  height: 16vh;
+  width: 16vh;
+  margin: auto;
+  margin-top: 2vh;
+  margin-bottom: 0;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.profile-name {
+  font-weight: bold;
+}
+
+.active-item {
+}

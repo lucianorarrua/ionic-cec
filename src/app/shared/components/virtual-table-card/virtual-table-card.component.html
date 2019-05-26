@@ -1,0 +1,51 @@
+<ion-grid fixed class="virtual-table-grid">
+  <ion-row align-items-center>
+    <ion-col size="3">
+      <ion-row align-items-center justify-content-center>
+        <ion-col size="12" no-padding>
+          <img class="virtual-table-photo rounded" [src]="virtualTable.imageFood.url">
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col size="9">
+      <ion-row justify-content-between class="first-row-group">
+        <ion-col size="8" no-padding>
+          <h5 no-margin><b>{{virtualTable.title}}</b></h5>
+        </ion-col>
+        <ion-col size="4" no-padding>
+          <h5 text-end no-margin><b>$ {{virtualTable.price}}</b></h5>
+        </ion-col>
+      </ion-row>
+      <ion-row class="second-row-group">
+        <ion-col size="8" no-padding>
+          <h6 no-margin>{{chefData.name}} {{chefData.surname}}</h6>
+        </ion-col>
+        <ion-col size="4" no-padding>
+          <h6 text-end no-margin>
+            <ion-badge color="primary">
+              <ion-icon name="star"></ion-icon> {{chefData.score}}
+            </ion-badge>
+          </h6>
+        </ion-col>
+      </ion-row>
+      <ion-row class="third-row-group">
+        <ion-col size="12" no-padding>
+          <ion-row no-margin no-padding>
+            <ion-col size="12" no-margin no-padding>
+              <p class='third-text' no-margin text-nowrap float-left>
+                {{virtualTable.deadlineForEntering | date:'medium'}} </p>
+            </ion-col>
+          </ion-row>
+          <ion-row no-margin no-padding>
+            <ion-col size="12" no-margin no-padding>
+              <p class='third-text' no-margin float-left
+                *ngFor="let paymentMethod of virtualTable.paymentMethods;let i=index">
+                <ng-container *ngIf="i>0">{{", "}}</ng-container>{{paymentMethod.payMethod}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>

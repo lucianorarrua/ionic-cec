@@ -1,0 +1,8 @@
+<div class="validation-errors">
+  <ng-container *ngFor="let validation of validationMessages">
+    <div class="error-message"
+      *ngIf="validationsForm.get([validationType]).hasError(validation.type) && (validationsForm.get([validationType]).dirty || validationsForm.get([validationType]).touched)">
+      {{ validation.message }}
+    </div>
+  </ng-container>
+</div>

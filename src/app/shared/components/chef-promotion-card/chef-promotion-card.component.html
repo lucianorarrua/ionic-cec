@@ -1,0 +1,33 @@
+<ion-grid fixed class="grid-container" no-padding>
+
+  <ion-row justify-content-center align-items-center>
+    <ion-col size="12" no-margin no-padding>
+      <div class="container-banner-promotion" [style.backgroundImage]="'url('+ this.urlBanner +')'">
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row justify-content-center class="ion-no-padding">
+    <ion-col size="2" align-self-center>
+      <div class="container-profile-photo" lines>
+        <ion-img class="profile-photo" [src]="this.urlProfilePhoto">
+        </ion-img>
+      </div>
+    </ion-col>
+    <ion-col size="9">
+      <ion-text>
+        <h5 class="ion-no-margin">{{this.chefName}}</h5>
+      </ion-text>
+      <ion-label>
+        <b>
+          <ion-badge color="primary">
+            <ion-icon name="star"></ion-icon>
+            {{this.score}}
+          </ion-badge>
+        </b>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- https://image.flaticon.com/icons/svg/1734/1734017.svg
+https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80 -->

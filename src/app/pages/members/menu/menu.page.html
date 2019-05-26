@@ -1,0 +1,80 @@
+<ion-split-pane>
+  <ion-menu contentId="content">
+    <ion-item c lines="none">
+      <ion-header no-border>
+        <ion-avatar class="profile-photo">
+          <img class="profile-photo-img" [src]="profilePhoto" />
+        </ion-avatar>
+        <ion-toolbar>
+          <ion-title text-center class="profile-name">{{userData.name | uppercase}} {{userData.surname | uppercase}}
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+    </ion-item>
+    <ion-content>
+      <ion-list lines="none">
+
+        <ion-item-divider>
+          <ion-label>
+            Opciones básicas
+          </ion-label>
+        </ion-item-divider>
+
+        <ion-menu-toggle auto-hide="false" *ngFor="let page of appMainPages">
+          <ion-item lines="none" [routerDirection]="'forward'" [routerLink]="[page.url]">
+            <ion-icon slot="start" [name]="page.icon" color="primary"></ion-icon>
+            <ion-label>
+              {{ page.title }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item-divider>
+          <ion-label>
+            Opciones de chef
+          </ion-label>
+        </ion-item-divider>
+
+        <ion-menu-toggle auto-hide="false" *ngFor="let page of appSecondaryPages">
+          <ion-item lines="none" [routerDirection]="'root'" (click)="openPage(page.url)">
+            <!-- [routerLink]="[page.url] -->
+            <ion-icon slot="start" [name]="page.icon" color="primary">
+            </ion-icon>
+            <ion-label>
+              {{ page.title }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item-divider>
+          <ion-label>
+            Otras opciones
+          </ion-label>
+        </ion-item-divider>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item lines="none" (click)="logout()" button>
+            <ion-icon slot="start" [name]="'log-out'" color="primary">
+            </ion-icon>
+            <ion-label>
+              Cerrar sesión
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item lines="none" [routerDirection]="'root'" (click)="openPage('/members/menu/about')">
+            <ion-icon slot="start" [name]="'logo-ionic'" color="primary">
+            </ion-icon>
+            <ion-label>
+              Acerca de
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="content" main></ion-router-outlet>
+</ion-split-pane>
+
+<!-- text-center -->

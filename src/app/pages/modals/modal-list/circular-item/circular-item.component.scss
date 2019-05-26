@@ -1,0 +1,17 @@
+.ion-label {
+  font-weight: bold;
+}
+
+.img-item {
+  height: auto;
+  width: 100%;
+  border-color: rgba(0, 0, 0, 0.13);
+  border-width: 2px;
+  border-radius: 100%;
+  border-style: solid;
+  //   border-radius: 90;
+  img {
+    height: auto;
+    width: 50vw;
+  }
+}

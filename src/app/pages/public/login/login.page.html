@@ -1,0 +1,61 @@
+<ion-content padding class="getstart ion-align-items-center">
+
+  <ion-grid fixed class="login-grid" style="height: 100vh;">
+    <ion-row style="height: 100vh;" align-items-center class="ion-padding">
+      <ion-col size="12">
+        <ion-row justify-content-center no-margin>
+          <ion-col size="7">
+            <ion-avatar no-margin class="logo-app">
+              <img class="logo-app-img" src="../../../../assets/avatars/grandmother.svg" />
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-row class='traslucent-gray' padding-top>
+          <ion-col size="12">
+            <ion-row>
+              <ion-col size="12">
+                <ion-title text-center color="primary" no-padding>
+                  <h1 no-margin style='width: 100%'>{{'Iniciar sesión' | uppercase}}</h1>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+            <form class="form" [formGroup]="validationsForm" (ngSubmit)="loginUser(validationsForm.value)">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-item>
+                    <ion-label position="floating" color="primary" style="font-weight: 600">E-Mail</ion-label>
+                    <ion-input type="email" color="primary" type="text" formControlName="email"></ion-input>
+                  </ion-item>
+                  <app-validation-message [validationMessages]=validationMessages.email
+                    [validationsForm]=validationsForm [validationType]="'email'">
+                  </app-validation-message>
+                  <ion-item>
+                    <ion-label position="floating" color="primary" style="font-weight: 600">Contraseña</ion-label>
+                    <ion-input type="password" color="primary" formControlName="password" class="form-controll">
+                    </ion-input>
+                  </ion-item>
+                  <app-validation-message [validationMessages]=validationMessages.password
+                    [validationsForm]=validationsForm [validationType]="'password'">
+                  </app-validation-message>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  <ion-button color="primary" expand="block" [routerLink]="['/login']" routerDirection="forward"
+                    type="submit" [disabled]="!validationsForm.valid">
+                    <ion-icon slot="start" [name]="'log-in'" color="tertiary">
+                    </ion-icon>{{ 'Iniciar Sesión' | uppercase }}
+                  </ion-button>
+                  <ion-button color="tertiary" expand="block" [routerLink]="['/register']" routerDirection="forward">
+                    {{ '¿No está registrado? Regístrate' | uppercase }}
+                  </ion-button>
+                  <label class="error-message">{{errorMessage}}</label>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

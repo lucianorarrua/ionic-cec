@@ -1,0 +1,66 @@
+<ion-header no-border>
+  <ion-toolbar color="tertiary" lines="none">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/members/menu/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Mis mesas virtuales
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-title>Mesas virtuales abiertas</ion-title>
+        </ion-item>
+        <ion-row justify-content-center>
+          <ion-col size="12">
+            <ng-container *ngFor="let ovt of openVirtualTables">
+              <ion-item-sliding>
+
+                <ion-item class="card-item">
+                  <app-virtual-table-card [virtualTable]=ovt>
+                  </app-virtual-table-card>
+                </ion-item>
+                <ion-item-options side="end">
+                  <ion-item-option (click)="presentDeleteVirtualTableToast(ovt)" color="danger"
+                    class="danger-item-option">
+                    <ion-icon name="trash" class="trash-button"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ng-container>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-title>Mesas virtuales finalizadas</ion-title>
+        </ion-item>
+        <ion-row justify-content-center>
+          <ion-col size="12">
+            <ng-container *ngFor="let cvt of closedVirtualTables">
+              <ion-item-sliding>
+                <ion-item class="card-item">
+                  <app-virtual-table-card [virtualTable]=cvt>
+                  </app-virtual-table-card>
+                </ion-item>
+                <ion-item-options side="end">
+                  <ion-item-option (click)="presentDeleteVirtualTableToast(cvt)" color="danger"
+                    class="danger-item-option">
+                    <ion-icon name="trash" class="trash-button"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ng-container>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

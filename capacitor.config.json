@@ -1,0 +1,7 @@
+{
+  "appId": "com.comoencasa.ionicomoencasa",
+  "appName": "Como en casa",
+  "bundledWebRuntime": true,
+  "npmClient": "npm",
+  "webDir": "www"
+}

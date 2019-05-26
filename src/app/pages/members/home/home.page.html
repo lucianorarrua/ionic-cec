@@ -1,0 +1,51 @@
+<ion-header no-border>
+  <ion-toolbar color="tertiary" lines="none">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>
+      Como en casa
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-title>Cocineros Recomendados</ion-title>
+        </ion-item>
+        <ion-row justify-content-center>
+          <ion-col size="11">
+            <ion-slides pager="false" [options]="this.coverflowSlidesOptions">
+              <ion-slide *ngFor="let chef of promotedChefs">
+                <app-chef-promotion-card [urlBanner]=chef.urlBanner [chefName]=chef.chefName
+                  [urlProfilePhoto]=chef.urlProfilePhoto [score]=chef.score></app-chef-promotion-card>
+              </ion-slide>
+            </ion-slides>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-title>Comidas para vos</ion-title>
+        </ion-item>
+        <ion-row justify-content-center>
+          <ion-col size="12">
+            <ng-container *ngFor="let vt of virtualTables">
+              <ion-item *ngIf="vt.chefUid!==authUser.uid">
+                <app-virtual-table-card [virtualTable]=vt (click)="presentModal(vt,userData)" [routerLink]="">
+                </app-virtual-table-card>
+              </ion-item>
+            </ng-container>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-content>
+  <ion-grid fixed>
+    <ion-row align-items-center style="height: 100%">
+      <ion-col size="12">
+        <ion-card>
+          <img class='virtual-table-photo' [src]="virtualTableSelected.imageFood.url">
+          <ion-card-header>
+            <ion-card-title>{{virtualTableSelected.title}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Sobre el Chef</ion-card-subtitle>
+          </ion-card-header>
+          <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input disabled>{{chefData.name}} {{chefData.surname}}</ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Calificación</ion-label>
+            <ion-input disabled>
+              <ion-badge [class.ion-badge-success]='chefData.score>4'
+                [class.ion-badge-warring]='chefData.score>2 && chefData.score<4'
+                [class.ion-badge-danger]='chefData.score<2'>
+                <ion-icon name="star"></ion-icon> {{chefData.score}}
+              </ion-badge>
+            </ion-input>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Sobre esta mesa mesa</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="stacked">Información extra</ion-label>
+              <ion-textarea disabled> {{virtualTableSelected.extraInformation}}
+              </ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Puedes inscribirte hasta las:</ion-label>
+              <ion-input disabled>{{virtualTableSelected.deadlineForEntering | date:'medium'}}</ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Recibirás tu pedido a partir de las:</ion-label>
+              <ion-input disabled>{{virtualTableSelected.deliveryTime | date:'medium'}}</ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Tiene un costo de:</ion-label>
+              <ion-input disabled> <b>$ {{virtualTableSelected.price}}</b>{{"&nbsp; por plato"}}</ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Quedan disponibles:</ion-label>
+              <ion-input disabled>
+                <b>{{virtualTableSelected.maxEating - virtualTableSelected.dinersId.length}}</b>{{"&nbsp; platos"}}
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Puedes pagar con:</ion-label>
+              <ion-input disabled>
+                <ng-container *ngFor="let payMethod of virtualTableSelected.paymentMethods">{{payMethod.payMethod}}
+                  {{"&nbsp;"}}</ng-container>
+              </ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-footer>
+
+            <ion-item color="primary" lines="none" [routerDirection]="'forward'" [routerLink]="" (click)="returnItem()">
+              <ion-icon slot="start" name="restaurant" color="tertiary"></ion-icon>
+              <ion-label>
+                Anotarse a esta mesa
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none" [routerDirection]="'backward'" [routerLink]="" (click)="closeModal()">
+              <ion-icon slot="start" name="close" color="primary"></ion-icon>
+              <ion-label>
+                Cancelar
+              </ion-label>
+            </ion-item>
+          </ion-footer>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

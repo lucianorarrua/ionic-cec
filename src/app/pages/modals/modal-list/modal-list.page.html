@@ -1,0 +1,21 @@
+<ion-header no-border>
+  <ion-toolbar color="tertiary" lines="none">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/register" (click)="closeModal()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Seleccione un avatar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row justify-content-around>
+      <ion-col size="5" *ngFor="let item of listItems;let i = index" ng-for>
+        <ion-item button (click)="returnItem(i, item)">
+          <app-circular-item [img]=item.imgItem [textImg]=item.textItem>
+          </app-circular-item>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

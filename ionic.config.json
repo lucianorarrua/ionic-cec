@@ -1,0 +1,7 @@
+{
+  "name": "ionic-cec",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

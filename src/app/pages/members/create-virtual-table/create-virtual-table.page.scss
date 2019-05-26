@@ -1,0 +1,20 @@
+ion-grid {
+  width: 95%;
+  background: white;
+  .virtual-table-photo {
+    height: auto;
+    width: auto;
+    margin: auto;
+    img {
+      width: 35vw;
+      height: 35vw;
+      margin: auto;
+    }
+  }
+  .error-message {
+    color: var(--ion-color-danger);
+  }
+  .success-message {
+    color: var(--ion-color-success);
+  }
+}

@@ -1,0 +1,29 @@
+ion-grid {
+  width: 100%;
+  h1 {
+    color: var(--ion-color-primary);
+  }
+}
+.profile-photo {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  margin-top: 2vh;
+  margin-bottom: 0;
+  img {
+    width: 20vh;
+    height: 20vh;
+    margin: auto;
+    border-color: rgba(0, 0, 0, 0.13);
+    border-width: 2px;
+    border-radius: 100%;
+    border-style: solid;
+  }
+}
+
+.profile-name {
+  font-weight: bold;
+}
+
+.active-item {
+}

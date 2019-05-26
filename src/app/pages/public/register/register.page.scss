@@ -1,0 +1,45 @@
+ion-grid {
+  width: 95%;
+  background: white;
+  .profile-photo {
+    width: 100%;
+    height: auto;
+    img {
+      width: 35vw;
+      height: 35vw;
+      margin: auto;
+      border-color: rgba(0, 0, 0, 0.13);
+      border-width: 2px;
+      border-radius: 100%;
+      border-style: solid;
+    }
+  }
+
+  /* .profile-photo {
+    height: auto;
+    width: auto;
+    margin: auto;
+
+    border-color: rgba(0, 0, 0, 0.13);
+    border-width: 2px;
+    border-radius: 200px;
+    border-style: solid;
+    img {
+      width: 20vh;
+      height: 20vh;
+      margin: auto;
+    }
+  } */
+
+  .profile-photo-button {
+    width: 90%;
+    max-width: 60px;
+    height: 30px;
+  }
+  .error-message {
+    color: var(--ion-color-danger);
+  }
+  .success-message {
+    color: var(--ion-color-success);
+  }
+}

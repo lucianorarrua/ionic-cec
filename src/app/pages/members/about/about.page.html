@@ -1,0 +1,20 @@
+<ion-header no-border>
+  <ion-toolbar color="tertiary" lines="none">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/members/menu/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Acerca de
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines color="tertiary" (click)="openGitHub()">
+    <ion-icon slot="start" [name]="'logo-github'" color="primary">
+    </ion-icon>
+    <ion-label>
+      Ir al GitHub del proyecto
+    </ion-label>
+  </ion-item>
+</ion-content>
