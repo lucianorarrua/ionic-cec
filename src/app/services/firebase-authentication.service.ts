@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../shared/models/user.model';
-import { FirebaseFirestoreService } from './firebase-firestore.service';
-import { Observable } from 'rxjs/internal/Observable';
-import { Storage } from '@ionic/storage';
 import { FirestorageUsersService } from './firestorage-users.service';
 
 

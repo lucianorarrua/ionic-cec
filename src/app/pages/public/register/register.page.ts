@@ -10,13 +10,13 @@ import {
 import { FirebaseAuthenticationService } from 'src/app/services/firebase-authentication.service';
 import { ModalController, LoadingController } from '@ionic/angular';
 import { ModalListPage } from '../../modals/modal-list/modal-list.page';
-import { FirebaseStorageService } from 'src/app/services/providers/firebase-storage.service';
-import { FirebaseFirestoreService } from 'src/app/services/firebase-firestore.service';
+import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
 import { Image } from 'src/app/shared/models/image.model';
 import { User } from 'src/app/shared/models/user.model';
 import { ToastController } from '@ionic/angular';
 import { Color } from '@ionic/core';
 import { BehaviorSubject } from 'rxjs';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-register',
@@ -41,7 +41,7 @@ export class RegisterPage implements OnInit {
     private formBuilder: FormBuilder,
     private modalController: ModalController,
     private sanitizer: DomSanitizer,
-    private userDatabase: FirebaseFirestoreService<User>,
+    private readonly afs: AngularFirestore,
     private storage: FirebaseStorageService,
     public toastController: ToastController,
     private loadingController: LoadingController
@@ -260,8 +260,7 @@ export class RegisterPage implements OnInit {
                   urlBanner: null
                 };
                 // Agrega un doumento de tipo User a la Database
-                this.userDatabase
-                  .addDocument(user)
+                this.afs.collection<User>('users').add(user)
                   .then(() => {
                     this.successToast.next(
                       `Felicidades ${

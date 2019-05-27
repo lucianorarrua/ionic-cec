@@ -12,7 +12,7 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
-import { FirebaseStorageService } from 'src/app/services/providers/firebase-storage.service';
+import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
 import { Image } from 'src/app/shared/models/image.model';
 import { VirtualTable } from 'src/app/shared/models/virtual-table.model';
 import { ToastController, LoadingController } from '@ionic/angular';
