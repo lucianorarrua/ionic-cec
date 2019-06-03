@@ -19,10 +19,10 @@ export class CameraService {
   async takePicture() {
     const options: CameraOptions = {
       quality: 50,
-      allowEditing: true,
+      allowEditing: false,
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera,
-    }
+    };
     return await Camera.getPhoto(options);
   }
 }
